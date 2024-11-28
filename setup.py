@@ -6,16 +6,15 @@ def get_requirements(file_path:str)->List[str]:
     '''
     this function will return the list of requirements
     '''
-    # open file and remove \
     requirements=[]
     with open(file_path) as file_obj:
-        requirements=file_obj.readlines()
-        requirements=[req.replace("\n","") for req in requirements]
+        requirements=file_obj.readlines()  # Reads all lines from the requirements file.
+        requirements=[req.replace("\n","") for req in requirements]    # Removes newline characters.
 
         if HYPEN_E_DOT in requirements:
-            requirements.remove(HYPEN_E_DOT)
+            requirements.remove(HYPEN_E_DOT)   # Removes the `-e .` entry if present.
     
-    return requirements
+    return requirements    # Returns a cleaned list of dependencies.
 
 setup(
 name='mlproject',
